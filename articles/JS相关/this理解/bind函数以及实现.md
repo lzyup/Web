@@ -32,7 +32,7 @@
 
                     //当作为普通函数时,this指向window,此时结果为false,将绑定函数的this指向context
                     return self.apply(
-                        this instanceof fNOP ? this : context,
+                        this instanceof fBound ? this : context,
                         args.concat(bindArgs)
                     );
                 };
