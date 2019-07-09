@@ -29,6 +29,7 @@
                     //这时的argument是指bind返回的函数传入的参数
                     var bindArgs = Array.prototype.slice.call(arguments);
                     //此时返回的绑定函数当作为构造函数时，this指向实例，此时this instance of fBound 结果为true,可以让实例获得来自绑定函数的值
+                    //**注意这里的this和外边的this不一样**
 
                     //当作为普通函数时,this指向window,此时结果为false,将绑定函数的this指向context
                     return self.apply(
