@@ -32,7 +32,7 @@ A：
 A：`git branch -d <local-branchname>` 注意此时你不应该在你想要删除的这个分支上操作
 
 6、**Q：想删除远程分支，怎么办?**
-A：`git push orgin :<remote-branchname>`就是推送一个空的本地分支到你想删除的远程分支即删除了
+A：`git push origin :<remote-branchname>`就是推送一个空的本地分支到你想删除的远程分支即删除了
 
 7、**Q：本地分支名字取的不好，想重命名怎么办?**
 A：`git branch -m <new-branch-name>`
@@ -48,6 +48,25 @@ A：
 - `git rm -f --cached [filename]` 从暂存区删除文件
 - `git commit -m "message"` 提交
 - `git push origin master` 推送到远程仓库
+
+11、 **Q:想将本地项目关联到远程仓库并推送怎么办**
+- `git remote add origin git@github.com:lzyup/vueComponentLearn.git`
+- `git push -u origin master`
+
+12、 **Q:如何打上tag并推送**
+- `git tag -a v1.4 -m "my version 1.4"`
+- `git push origin v1.4`(提交单个标签)
+- `git push origin --tags`(提交全部tag)
+
+13、**Q:如何检出指定tag**
+- `git checkout -b [branchname] [tagname]`
+
+14、 **Q:如何显示本地tag**
+- `git tag`
+
+15、**Q:如何删除tag**
+- `git tag -d [tagname]`（删除本地tag）
+- `git push origin :refs/tags/[tagname]`(用push,删除远程tag)
  
 ## 三、容易混淆的概念理解
 - **` git fetch`:** 取回所有分支的更新，通过这个命令取回的代码对你本地开发的代码是没有影响的。
