@@ -17,19 +17,22 @@
         .all {
             width: 500px;
             /* height: 200px; */
-            padding: 7px;
-            border: 1px solid #ccc;
+            /* padding: 7px;
+            border: 1px solid #ccc; */
             margin: 100px auto;
+            /* padding-top: 20px; */
             overflow: hidden;
             height: 500px;
+            background-color: red;
+            position: relative;
         }
 
         .screen {
             width: 500px;
-            /* height: 200px; */
-            overflow: hidden;
+            /* height: 500px; */
+            overflow: scroll;
             position: relative;
-            background-color: aqua
+            border: 2px solid #ccc;
         }
 
         .screen li {
@@ -41,12 +44,15 @@
 
         .screen ul {
             width: 3000px;
+            height: 500px;
         }
 
         .wrapper {
             overflow: scroll;
             background-color: aquamarine;
             margin-top: 100px;
+            height: 500px;
+            position: relative;
         }
     </style>
 </head>
@@ -64,31 +70,44 @@
         </div>
     </div>
     <script>
+
         window.addEventListener('scroll', e => {
             let t = document.documentElement.scrollTop || document.body.scrollTop;
             // console.log('测试scroller的scrollTop----->', t);
         })
-        let touchLayer = document.getElementById('all');
-        let ulElement = document.getElementById('ul')
+        let touchLayer = document.getElementById('screen');
+        // let ulElement = document.getElementById('ul')
         touchLayer.addEventListener('scroll', e => {
-            console.log('测试e.target----->', e.target);
-            console.log('测试e.currenttarget---->', e.currentTarget);
+            let top1 = touchLayer.getBoundingClientRect().top;
+            let {
+                clientHeight,
+                offsetHeight,
+                scrollHeight,
+                offsetTop,
+                scrollTop,
+            } = touchLayer;
+            console.log('测试clientHeight----->', clientHeight);
+            console.log('测试offsetHeight----->', offsetHeight);
+            console.log('测试scrollHeight----->', scrollHeight);
+            console.log('测试top-------------->', top1);
+            console.log('测试offsetTop-------->', offsetTop);
+            console.log("测试scrollTop-------->", scrollTop);
         })
-        let top1 = touchLayer.getBoundingClientRect().top;
+        // let top1 = touchLayer.getBoundingClientRect().top;
 
-        let {
-            clientHeight,
-            offsetHeight,
-            scrollHeight,
-            offsetTop,
-            scrollTop,
-        } = touchLayer;
-        console.log('测试clientHeight----->', clientHeight);
-        console.log('测试offsetHeight----->', offsetHeight);
-        console.log('测试scrollHeight----->', scrollHeight);
-        console.log('测试top-------------->', top1);
-        console.log('测试offsetTop-------->', offsetTop);
-        console.log("测试scrollTop-------->", scrollTop);
+        // let {
+        //     clientHeight,
+        //     offsetHeight,
+        //     scrollHeight,
+        //     offsetTop,
+        //     scrollTop,
+        // } = touchLayer;
+        // console.log('测试clientHeight----->', clientHeight);
+        // console.log('测试offsetHeight----->', offsetHeight);
+        // console.log('测试scrollHeight----->', scrollHeight);
+        // console.log('测试top-------------->', top1);
+        // console.log('测试offsetTop-------->', offsetTop);
+        // console.log("测试scrollTop-------->", scrollTop);
     </script>
 </body>
 
