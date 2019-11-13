@@ -20,19 +20,23 @@
             /* padding: 7px;
             border: 1px solid #ccc; */
             margin: 100px auto;
-            /* padding-top: 20px; */
+            padding-top: 20px;
             overflow: hidden;
             height: 500px;
             background-color: red;
             position: relative;
+            border: 1px solid #ccc;
         }
 
         .screen {
+            padding-top:10px;
             width: 500px;
-            /* height: 500px; */
-            overflow: scroll;
+            height: 500px;
+            overflow: auto;
             position: relative;
-            border: 2px solid #ccc;
+            border: 1px solid #ccc;
+            /* box-sizing: border-box; */
+            /* padding-top:5px; */
         }
 
         .screen li {
@@ -48,7 +52,7 @@
         }
 
         .wrapper {
-            overflow: scroll;
+            overflow: auto;
             background-color: aquamarine;
             margin-top: 100px;
             height: 500px;
@@ -70,11 +74,12 @@
         </div>
     </div>
     <script>
-
-        window.addEventListener('scroll', e => {
+        console.log('11111');
+        window.onscroll = function (e) {
+             console.log('222');
             let t = document.documentElement.scrollTop || document.body.scrollTop;
-            // console.log('测试scroller的scrollTop----->', t);
-        })
+            console.log('测试scroller的scrollTop----->', t);
+        }
         let touchLayer = document.getElementById('screen');
         // let ulElement = document.getElementById('ul')
         touchLayer.addEventListener('scroll', e => {
