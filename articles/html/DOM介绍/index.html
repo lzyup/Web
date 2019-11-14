@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var element = document.getElementById("box");//获取元素节点（标签）
+            var attribute = element.getAttributeNode("id");//获取box1的属性节点
+            var txt = element.firstChild;//获取box1的文本节点
+
+            var value = element.getAttribute("id"); //获取id的属性值
+            var childNodes = element.childNodes;
+            var childElements = element.children;
+
+            function travels(root) {
+                let childs = root.childNodes;
+                if (root.nodeType == 1) {
+                    console.log(root.tagName);
+                }
+                // for (let i = 0; i < childs.length; i++) {
+                //     let node = childs[i];
+                //     if (node.nodeType == 1) {
+                //         travels(node);
+                //     }
+                // }
+                childs.forEach((node, index) => {
+                    if (node.nodeType == 1) {
+                        travels(node);
+                    }
+                })
+            }
+            travels(element);
+            console.log(element);
+            console.log("--------------");
+            console.log(attribute);
+            console.log("--------------");
+            console.log(txt);
+            console.log("--------------");
+            console.log(value);
+            console.log("--------------");
+            console.log('测试childNodes----->', childNodes);
+            console.log('测试childElements---->', childElements);
+            console.log('测试--------->', childElements[0].tagName, childElements[0].nodeName);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box" value="111"><span id="content">走进科学</span></div>
+</body>
+
+</html>
