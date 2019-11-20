@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload = function () {
+            //获取父节点，并为它绑定click单击事件。false表示事件在冒泡阶段触发（默认）
+            var parentNode = document.getElementById('parent-list');
+            // parentNode.onclick = function (event){
+            //     console.log('22测试event对象------>', event.currentTarget);
+            //     event = event || window.event;
+            //     //e.target表示：触发事件的对象
+            //     //如果触发事件的对象是我们期望的对象，则执行否则不执行
+            //     if (event.target && event.target.className == 'link') {
+            //         // if(event.target && event.target.nodeName.toUpperCase() == 'A'){
+
+            //         // }
+            //         console.log('我是ul的单击响应函数')
+            //     }
+            // }
+            parentNode.addEventListener('click', function (event) {
+                console.log('11测试event对象------>', event.currentTarget);
+                event = event || window.event;
+                  console.log('22测试event对象------>', event.currentTarget);
+                    console.log('33测试event对象------>', event);
+                      console.log('44测试event对象------>',JSON.stringify(event));
+                //e.target表示：触发事件的对象
+                //如果触发事件的对象是我们期望的对象，则执行否则不执行
+                if (event.target && event.target.className == 'link') {
+                    // if(event.target && event.target.nodeName.toUpperCase() == 'A'){
+
+                    // }
+                    console.log('我是ul的单击响应函数')
+                }
+            }, false)
+        }
+    </script>
+</head>
+
+<body>
+    <ul id="parent-list" style="background-color:#bfa">
+        <li>
+            <p>我是p元素</p>
+        </li>
+        <li><a href="javascript:;" class="link">超链接一</a></li>
+        <li><a href="javascript:;" class="link">超链接二</a></li>
+        <li><a href="javascript:;" class="link">超链接三</a></li>
+    </ul>
+
+</body>
+
+</html>
