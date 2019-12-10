@@ -7,6 +7,12 @@ Promise之我见
 	- 从`pending`到`rejected`
 这两种状态的变化任一个发生就定型了不会再发生改变。
 
+
+### 1.1、Promise的缺点
+- 无法取消`promise`,一旦新建它就会立即执行，无法中途取消。
+- 如果不设置回调函数，`promise`内部抛出的错误，不会反应到外部。
+- 当处于`pending`状态时，无法得知目前发展到哪一个阶段（刚刚开始还是即将完成）
+
 ## 2、Promise的基本用法
 ```
 let p = new Promise((resolve, reject) => {
