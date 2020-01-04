@@ -22,8 +22,9 @@ Node:构成HTML网页的最基本单元。网页中的每一个部分都可以�
 
 ##### innerHTML和innerText的区别
 - `value`:标签的value属性
-- `innerHTML`:双闭合标签里面的内容（识别标签）
-- `innerText`:双闭合标签里面的内容（不识别标签）
+- `innerHTML`:从对象的起始位置到终止位置的全部内容，**包括内容里的Html标签**
+- `innerText`:从起始位置到终止位置的内容，**去除内容里的Html标签**
+- `outerHTML`:除了包含innerHTML的全部内容外，还包含对象标签本身
 - `innerText`是无法把html标签转化为标签，而是当做纯文本内容显示出来，而`innerHTML`则可以把内容中标签转化成html标签
 
 #### nodeType属性
