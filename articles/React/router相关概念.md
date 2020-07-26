@@ -87,12 +87,78 @@ class Main extends Component{
 ### `<Route>`
 - `Route`代表你的路由界面，`path`代表路径，`component`代表路径对应的界面。
 - 在其`path`属性与某个`location`匹配时呈现一些UI
+- 
+```
+<Route path='/roster'>
+//when the pathname is '/',the path dose not match
+//when the pathname is '/roster' or '/roster/2',the path matches
+//If you only want to match '/roster',then you need to use
+//the "exact" prop.The following will match '/roster',but not
+//'/roster/2'
+
+<Route exact path="/roster">
+```
+
+#### `<Route>`将会渲染什么
+[链接](https://juejin.im/post/5a7e9ee7f265da4e7832949c#heading-12)</br>
+Routes可以接受三种props来决定路径匹配时渲染的元素，只能给`<Route>`元素提供一种来定义要渲染的内容。
+- `<component>`</br>
+一个React组件，当一个带有`component`prop的路由匹配的时候，路由将会返回prop提供的component类型的组件
+- `render`</br>
+一个返回React元素的方法，与`Component`类似，也是当路径匹配的时候会被调用。写成内联形式渲染和传递参数的时候非常方便。
+- `children`</br>
+一个返回React元素的方法。与前两种不同的是，这种方法总是会被渲染，无论路由与当前的路径是否匹配。
+```
+<Route path="/page" component={Page}/>
+
+const extraProps = {color:'red'}
+<Route path="/page" render={(props)=>{
+    <Page {...props} data={extraProps}/>
+}}
+/>
+
+<Route path="/page" children={(props)=>{
+    props.match
+    ?<Page {...props}/>
+    :<EmptyPage {...props}/>
+}}/>
+```
 
 ### 路由传参
 ```
 /a/1 ---this.props.match.params.id
 /a?id=1---this.props.location.query.id`
 ```
+
+### React Router V4设计思路
+[链接](https://juejin.im/post/5986d1456fb9a03c3f405bd2)</br>
+在V4中，路由是动态，需要忘记之前使用静态路由的思维方式，把路由当做普通组件，动态路由的优点，可以任意时间、任意地点自由添加新的Route。
+
+e.g.</br>
+```
+<BrowserRoute>
+    <div>
+        <Route path='/' component={App}/>
+        <Route path={'/about'} component={About}/>
+        <Route path={'/contact'} component={Contact}/>
+    </div>
+</BrowserRoute>
+
+const About = (props) =>{
+    <div>
+        <Route path={`${props.match.url/a}` component={AboutA}}/>
+        <Route 
+            path={`${props.match.url}/b` component={AboutB}}
+        />
+    </div>
+}
+//动态在About组件内定义两个新的路由
+//当访问/about/a时，组件AboutA会被作为About的子组件渲染，
+//当访问/about/b时，组件AboutB会作为About的子组件渲染。
+
+```
+
+
 ###
-[参考链接](https://github.com/mrdulin/blog/issues/42)</br>
-[参考链接1](https://www.kancloud.cn/chandler/react_handbook/1271261)
+[参考链接（1）](https://github.com/mrdulin/blog/issues/42)</br>
+[参考链接（2）](https://www.kancloud.cn/chandler/react_handbook/1271261)
